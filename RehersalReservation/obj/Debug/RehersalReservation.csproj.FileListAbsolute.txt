@@ -84,3 +84,16 @@ E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\obj\Debug\RehersalReserv
 E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\obj\Debug\RehersalReservation.csproj.CopyComplete
 E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\obj\Debug\RehersalReservation.dll
 E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\obj\Debug\RehersalReservation.pdb
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\System.Runtime.CompilerServices.Unsafe.dll
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\Unity.Abstractions.dll
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\Unity.Container.dll
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\Unity.Mvc5.dll
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\System.Threading.Tasks.Extensions.dll
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\System.Runtime.CompilerServices.Unsafe.xml
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\Unity.Abstractions.pdb
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\Unity.Container.pdb
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\Entity.dll
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\Services.dll
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\Entity.pdb
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\Services.pdb
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\GridMvc.dll

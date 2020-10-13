@@ -1,0 +1,2 @@
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.Tests\obj\Debug\RehersalReservation.Tests.csprojAssemblyReference.cache
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.Tests\obj\Debug\RehersalReservation.Tests.csproj.CoreCompileInputs.cache

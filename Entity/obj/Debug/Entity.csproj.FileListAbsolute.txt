@@ -1,0 +1,5 @@
+E:\KoPei\proga\Rehersal_Reservation\Entity\bin\Debug\Entity.dll
+E:\KoPei\proga\Rehersal_Reservation\Entity\bin\Debug\Entity.pdb
+E:\KoPei\proga\Rehersal_Reservation\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
+E:\KoPei\proga\Rehersal_Reservation\Entity\obj\Debug\Entity.dll
+E:\KoPei\proga\Rehersal_Reservation\Entity\obj\Debug\Entity.pdb

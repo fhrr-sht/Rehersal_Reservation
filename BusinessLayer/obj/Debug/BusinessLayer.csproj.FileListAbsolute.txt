@@ -1,0 +1,5 @@
+E:\KoPei\proga\Rehersal_Reservation\BusinessLayer\bin\Debug\BusinessLayer.dll
+E:\KoPei\proga\Rehersal_Reservation\BusinessLayer\bin\Debug\BusinessLayer.pdb
+E:\KoPei\proga\Rehersal_Reservation\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+E:\KoPei\proga\Rehersal_Reservation\BusinessLayer\obj\Debug\BusinessLayer.dll
+E:\KoPei\proga\Rehersal_Reservation\BusinessLayer\obj\Debug\BusinessLayer.pdb

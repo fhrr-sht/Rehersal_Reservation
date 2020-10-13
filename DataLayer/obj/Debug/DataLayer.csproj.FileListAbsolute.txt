@@ -1,0 +1,5 @@
+E:\KoPei\proga\Rehersal_Reservation\DataLayer\bin\Debug\DataLayer.dll
+E:\KoPei\proga\Rehersal_Reservation\DataLayer\bin\Debug\DataLayer.pdb
+E:\KoPei\proga\Rehersal_Reservation\DataLayer\obj\Debug\DataLayer.csproj.CoreCompileInputs.cache
+E:\KoPei\proga\Rehersal_Reservation\DataLayer\obj\Debug\DataLayer.dll
+E:\KoPei\proga\Rehersal_Reservation\DataLayer\obj\Debug\DataLayer.pdb

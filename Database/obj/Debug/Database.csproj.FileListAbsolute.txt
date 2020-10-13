@@ -1,0 +1,6 @@
+E:\KoPei\proga\Rehersal_Reservation\Database\bin\Debug\Database.dll
+E:\KoPei\proga\Rehersal_Reservation\Database\bin\Debug\Database.pdb
+E:\KoPei\proga\Rehersal_Reservation\Database\obj\Debug\Database.csprojAssemblyReference.cache
+E:\KoPei\proga\Rehersal_Reservation\Database\obj\Debug\Database.csproj.CoreCompileInputs.cache
+E:\KoPei\proga\Rehersal_Reservation\Database\obj\Debug\Database.dll
+E:\KoPei\proga\Rehersal_Reservation\Database\obj\Debug\Database.pdb

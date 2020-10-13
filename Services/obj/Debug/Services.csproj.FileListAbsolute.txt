@@ -1,0 +1,9 @@
+E:\KoPei\proga\Rehersal_Reservation\Services\bin\Debug\Services.dll
+E:\KoPei\proga\Rehersal_Reservation\Services\bin\Debug\Services.pdb
+E:\KoPei\proga\Rehersal_Reservation\Services\bin\Debug\Entity.dll
+E:\KoPei\proga\Rehersal_Reservation\Services\bin\Debug\Entity.pdb
+E:\KoPei\proga\Rehersal_Reservation\Services\obj\Debug\Services.csprojAssemblyReference.cache
+E:\KoPei\proga\Rehersal_Reservation\Services\obj\Debug\Services.csproj.CoreCompileInputs.cache
+E:\KoPei\proga\Rehersal_Reservation\Services\obj\Debug\Services.csproj.CopyComplete
+E:\KoPei\proga\Rehersal_Reservation\Services\obj\Debug\Services.dll
+E:\KoPei\proga\Rehersal_Reservation\Services\obj\Debug\Services.pdb
