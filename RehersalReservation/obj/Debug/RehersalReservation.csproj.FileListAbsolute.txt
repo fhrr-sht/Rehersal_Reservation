@@ -97,3 +97,9 @@ E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\Services.dll
 E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\Entity.pdb
 E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\Services.pdb
 E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\GridMvc.dll
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\RehersalReservation.DataAccessLayer.Contracts.dll
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\RehersalReservation.DataAccessLayer.dll
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\RehersalReservation.DataAccessLayer.Models.dll
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\RehersalReservation.DataAccessLayer.Contracts.pdb
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\RehersalReservation.DataAccessLayer.pdb
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation\bin\RehersalReservation.DataAccessLayer.Models.pdb

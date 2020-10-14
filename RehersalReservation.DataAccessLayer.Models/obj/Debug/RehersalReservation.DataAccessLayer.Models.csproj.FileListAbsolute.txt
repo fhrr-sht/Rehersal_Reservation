@@ -1,0 +1,6 @@
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.DataAccessLayer.Models\bin\Debug\RehersalReservation.DataAccessLayer.Models.dll
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.DataAccessLayer.Models\bin\Debug\RehersalReservation.DataAccessLayer.Models.pdb
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.DataAccessLayer.Models\obj\Debug\RehersalReservation.DataAccessLayer.Models.csprojAssemblyReference.cache
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.DataAccessLayer.Models\obj\Debug\RehersalReservation.DataAccessLayer.Models.csproj.CoreCompileInputs.cache
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.DataAccessLayer.Models\obj\Debug\RehersalReservation.DataAccessLayer.Models.dll
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.DataAccessLayer.Models\obj\Debug\RehersalReservation.DataAccessLayer.Models.pdb

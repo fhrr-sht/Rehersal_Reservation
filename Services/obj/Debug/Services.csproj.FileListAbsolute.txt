@@ -7,3 +7,7 @@ E:\KoPei\proga\Rehersal_Reservation\Services\obj\Debug\Services.csproj.CoreCompi
 E:\KoPei\proga\Rehersal_Reservation\Services\obj\Debug\Services.csproj.CopyComplete
 E:\KoPei\proga\Rehersal_Reservation\Services\obj\Debug\Services.dll
 E:\KoPei\proga\Rehersal_Reservation\Services\obj\Debug\Services.pdb
+E:\KoPei\proga\Rehersal_Reservation\Services\bin\Debug\RehersalReservation.DataAccessLayer.Contracts.dll
+E:\KoPei\proga\Rehersal_Reservation\Services\bin\Debug\RehersalReservation.DataAccessLayer.Models.dll
+E:\KoPei\proga\Rehersal_Reservation\Services\bin\Debug\RehersalReservation.DataAccessLayer.Contracts.pdb
+E:\KoPei\proga\Rehersal_Reservation\Services\bin\Debug\RehersalReservation.DataAccessLayer.Models.pdb

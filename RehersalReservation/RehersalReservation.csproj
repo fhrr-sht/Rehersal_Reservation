@@ -208,6 +208,14 @@
       <Project>{5787e499-b2c6-4fde-a32b-e1dd2c7ddf78}</Project>
       <Name>Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RehersalReservation.DataAccessLayer.Contracts\RehersalReservation.DataAccessLayer.Contracts.csproj">
+      <Project>{78E978BC-8DC7-4D5A-92FA-E424DBB3F18D}</Project>
+      <Name>RehersalReservation.DataAccessLayer.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RehersalReservation.DataAccessLayer\RehersalReservation.DataAccessLayer.csproj">
+      <Project>{295D9D74-593A-4985-B926-0CF8376A47F8}</Project>
+      <Name>RehersalReservation.DataAccessLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Services\Services.csproj">
       <Project>{815404cb-66d1-4334-b9ff-8536c8dec23f}</Project>
       <Name>Services</Name>

@@ -1,4 +1,5 @@
 ﻿using Entity;
+using RehersalReservation.DataAccessLayer.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,25 +11,24 @@ namespace Services
 {
     public class RehersalService : IRehersalService
     {
+        private IRehersalRepository rehersalRepository;
+        public RehersalService(IRehersalRepository rehersalRepository)
+        {
+            this.rehersalRepository = rehersalRepository;
+        }
+
         public IEnumerable<RehersalSpase> GetRehersals()
         {
-            return new List<RehersalSpase>()
+            IEnumerable<RehersalReservation.DataAccessLayer.Models.RehersalSpase> data = this.rehersalRepository.GetRehersals();
+            IEnumerable<RehersalSpase> rehersalSpaces = data.Select(o =>
+            new RehersalSpase
             {
-                new RehersalSpase
-                {
-                    Adress = "adress1", 
-                    CityID = 1,
-                    RehersalSpaseID = 1,
-                    RehersalSpaseName = "Base1"
-                },
-                new RehersalSpase
-                {
-                    Adress = "adress2",
-                    CityID = 1,
-                    RehersalSpaseID = 2,
-                    RehersalSpaseName = "Base2"
-                }
-            };
+                Adress = o.Adress,
+                CityID = o.CityID,
+                RehersalSpaseID = o.RehersalSpaseID,
+                RehersalSpaseName = o.RehersalSpaseName
+            }).ToList();
+            return rehersalSpaces;
         }
     }
 }

@@ -1,0 +1,9 @@
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.DataAccessLayer.Contracts\bin\Debug\RehersalReservation.DataAccessLayer.Contracts.dll
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.DataAccessLayer.Contracts\bin\Debug\RehersalReservation.DataAccessLayer.Contracts.pdb
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.DataAccessLayer.Contracts\bin\Debug\RehersalReservation.DataAccessLayer.Models.dll
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.DataAccessLayer.Contracts\bin\Debug\RehersalReservation.DataAccessLayer.Models.pdb
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.DataAccessLayer.Contracts\obj\Debug\RehersalReservation.DataAccessLayer.Contracts.csprojAssemblyReference.cache
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.DataAccessLayer.Contracts\obj\Debug\RehersalReservation.DataAccessLayer.Contracts.csproj.CoreCompileInputs.cache
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.DataAccessLayer.Contracts\obj\Debug\RehersalReservation.DataAccessLayer.Contracts.csproj.CopyComplete
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.DataAccessLayer.Contracts\obj\Debug\RehersalReservation.DataAccessLayer.Contracts.dll
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.DataAccessLayer.Contracts\obj\Debug\RehersalReservation.DataAccessLayer.Contracts.pdb

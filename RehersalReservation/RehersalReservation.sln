@@ -13,13 +13,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer.Tests", "..\B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "..\Database\Database.csproj", "{538F834E-54E9-4CE5-ACC6-B2F1EE4B2726}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "..\DataLayer\DataLayer.csproj", "{B89314AA-A8C4-43D2-91E0-922A9BFDCB7E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "..\DTO\DTO.csproj", "{DC4B3233-35CC-4D51-9560-9752D03F308A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "..\Entity\Entity.csproj", "{5787E499-B2C6-4FDE-A32B-E1DD2C7DDF78}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "..\Services\Services.csproj", "{815404CB-66D1-4334-B9FF-8536C8DEC23F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RehersalReservation.DataAccessLayer", "RehersalReservation.DataAccessLayer", "{FDC668CD-39DC-43AE-9D43-2C70E9F3AB4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RehersalReservation.DataAccessLayer", "..\RehersalReservation.DataAccessLayer\RehersalReservation.DataAccessLayer.csproj", "{295D9D74-593A-4985-B926-0CF8376A47F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RehersalReservation.DataAccessLayer.Models", "..\RehersalReservation.DataAccessLayer.Models\RehersalReservation.DataAccessLayer.Models.csproj", "{BFEF5771-0EFA-4843-AD2D-0A70BDB12F32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RehersalReservation.DataAccessLayer.Contracts", "..\RehersalReservation.DataAccessLayer.Contracts\RehersalReservation.DataAccessLayer.Contracts.csproj", "{78E978BC-8DC7-4D5A-92FA-E424DBB3F18D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +53,6 @@ Global
 		{538F834E-54E9-4CE5-ACC6-B2F1EE4B2726}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{538F834E-54E9-4CE5-ACC6-B2F1EE4B2726}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{538F834E-54E9-4CE5-ACC6-B2F1EE4B2726}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B89314AA-A8C4-43D2-91E0-922A9BFDCB7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B89314AA-A8C4-43D2-91E0-922A9BFDCB7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B89314AA-A8C4-43D2-91E0-922A9BFDCB7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B89314AA-A8C4-43D2-91E0-922A9BFDCB7E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DC4B3233-35CC-4D51-9560-9752D03F308A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DC4B3233-35CC-4D51-9560-9752D03F308A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC4B3233-35CC-4D51-9560-9752D03F308A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,9 +65,26 @@ Global
 		{815404CB-66D1-4334-B9FF-8536C8DEC23F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{815404CB-66D1-4334-B9FF-8536C8DEC23F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{815404CB-66D1-4334-B9FF-8536C8DEC23F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{295D9D74-593A-4985-B926-0CF8376A47F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{295D9D74-593A-4985-B926-0CF8376A47F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{295D9D74-593A-4985-B926-0CF8376A47F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{295D9D74-593A-4985-B926-0CF8376A47F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFEF5771-0EFA-4843-AD2D-0A70BDB12F32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFEF5771-0EFA-4843-AD2D-0A70BDB12F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFEF5771-0EFA-4843-AD2D-0A70BDB12F32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFEF5771-0EFA-4843-AD2D-0A70BDB12F32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78E978BC-8DC7-4D5A-92FA-E424DBB3F18D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78E978BC-8DC7-4D5A-92FA-E424DBB3F18D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78E978BC-8DC7-4D5A-92FA-E424DBB3F18D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78E978BC-8DC7-4D5A-92FA-E424DBB3F18D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{295D9D74-593A-4985-B926-0CF8376A47F8} = {FDC668CD-39DC-43AE-9D43-2C70E9F3AB4B}
+		{BFEF5771-0EFA-4843-AD2D-0A70BDB12F32} = {FDC668CD-39DC-43AE-9D43-2C70E9F3AB4B}
+		{78E978BC-8DC7-4D5A-92FA-E424DBB3F18D} = {FDC668CD-39DC-43AE-9D43-2C70E9F3AB4B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CBDCDCCC-132B-4067-890D-26D95FAA9E5E}
