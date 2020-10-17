@@ -1,25 +1,30 @@
 ﻿@model IEnumerable<RehersalReservation.Models.RehersalSpace>
 
-    @using GridMvc.Html
-    @{
-        ViewBag.Title = "Home Page";
-    }
-    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
-    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Home Page";
+}
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
 
-    <div class="code-cut">
-        @Html.Grid(Model).Columns(columns =>
-                        {
-                            columns.Add(c => c.RehersalSpaseID).Titled("RehersalSpase ID").Filterable(true);
-                            columns.Add(c => c.RehersalSpaseName).Titled("RehersalSpaseName").Filterable(true);
-                            columns.Add(c => c.Adress).Titled("Adress").Filterable(true);
-                            columns.Add()
-                            .Encoded(false)
-                            .Sanitized(false)
-                            .SetWidth(30)
-                            .RenderValueAs(o => Html.ActionLink("Edit", "Edit", new { id = o.RehersalSpaseID }));
+<div class="code-cut">
+    @Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(c => c.RehersalSpaseID).Titled("RehersalSpase ID").Filterable(true);
+    columns.Add(c => c.RehersalSpaseName).Titled("RehersalSpaseName").Filterable(true);
+    columns.Add(c => c.Adress).Titled("Adress").Filterable(true);
+    columns.Add()
+    .Encoded(false)
+    .Sanitized(false)
+    .SetWidth(30)
+    .RenderValueAs(o => Html.ActionLink("Delete", "Delete", new { id = o.RehersalSpaseID }));
+    columns.Add()
+    .Encoded(false)
+    .Sanitized(false)
+    .SetWidth(30)
+    .RenderValueAs(o => Html.ActionLink("Edit", "Edit", new { id = o.RehersalSpaseID }));
 
-                        }).WithPaging(10).Sortable(true)
-    </div>
+}).WithPaging(10).Sortable(true)
+</div>

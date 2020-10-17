@@ -29,6 +29,11 @@ namespace RehersalReservation.Controllers
             }).ToList();
             return View(rehersalSpaces);
         }
+        public ActionResult Delete(int id)
+        {
+            rehersalService.DeleteRehersal(id);
+            return RedirectToAction("Index");
+        }
 
         public ActionResult About()
         {

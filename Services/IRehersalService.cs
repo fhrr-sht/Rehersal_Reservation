@@ -10,5 +10,7 @@ namespace Services
     public interface IRehersalService
     {
         IEnumerable<RehersalSpase> GetRehersals();
+        void DeleteRehersal(int rehersalSpaseID);
+
     }
 }

@@ -46,6 +46,7 @@
   <ItemGroup>
     <Content Include="2020_10_06_001 CreateTables.sql" />
     <Content Include="2020_10_06_002 SP GetRehersal.sql" />
+    <Content Include="2020_10_17_001 SP DeleteRehersal.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

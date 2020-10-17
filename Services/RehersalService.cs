@@ -17,6 +17,11 @@ namespace Services
             this.rehersalRepository = rehersalRepository;
         }
 
+        public void DeleteRehersal(int rehersalSpaseID)
+        {
+            this.rehersalRepository.DeleteRehersal(rehersalSpaseID);
+        }
+
         public IEnumerable<RehersalSpase> GetRehersals()
         {
             IEnumerable<RehersalReservation.DataAccessLayer.Models.RehersalSpase> data = this.rehersalRepository.GetRehersals();

@@ -10,5 +10,6 @@ namespace RehersalReservation.DataAccessLayer.Contracts
     public interface IRehersalRepository
     {
         List<RehersalSpase> GetRehersals();
+        void DeleteRehersal(int rehersalSpaseID);
     }
 }

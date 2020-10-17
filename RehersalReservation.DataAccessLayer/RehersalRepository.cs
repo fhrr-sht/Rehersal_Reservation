@@ -12,6 +12,16 @@ namespace RehersalReservation.DataAccessLayer
 {
     public class RehersalRepository : BaseRepository, IRehersalRepository
     {
+        public void DeleteRehersal(int rehersalSpaseID)
+        {
+            SqlParameter[] parameters =
+                {
+                new SqlParameter("@RehersalSpaseID", SqlDbType.Int) { Value = rehersalSpaseID}
+                };
+            ExecuteProcedure("DeleteRehersal", parameters);
+
+        }
+
         public List<RehersalSpase> GetRehersals()
         {
             List<RehersalSpase> rehersalSpases = new List<RehersalSpase>();
