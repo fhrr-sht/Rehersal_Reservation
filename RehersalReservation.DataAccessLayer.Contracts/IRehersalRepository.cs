@@ -11,5 +11,7 @@ namespace RehersalReservation.DataAccessLayer.Contracts
     {
         List<RehersalSpase> GetRehersals();
         void DeleteRehersal(int rehersalSpaseID);
+        void UpdateRehersal(RehersalSpase rehersalSpase);
+        RehersalSpase GetRehersalByID(int rehersalSpaseID);
     }
 }

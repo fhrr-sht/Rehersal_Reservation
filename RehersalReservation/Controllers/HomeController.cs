@@ -34,6 +34,31 @@ namespace RehersalReservation.Controllers
             rehersalService.DeleteRehersal(id);
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public ActionResult Edit(RehersalSpace rehersalSpace)
+        {
+            rehersalService.UpdateRehersal(new RehersalSpase
+            {
+                Adress = rehersalSpace.Adress,
+                CityID = rehersalSpace.CityID,
+                RehersalSpaseID = rehersalSpace.RehersalSpaseID,
+                RehersalSpaseName = rehersalSpace.RehersalSpaseName
+            });
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            Entity.RehersalSpase data = this.rehersalService.GetRehersalByID(id);
+            RehersalSpace rehersalSpace= new RehersalSpace
+            {
+                Adress = data.Adress,
+                CityID = data.CityID,
+                RehersalSpaseID = data.RehersalSpaseID,
+                RehersalSpaseName = data.RehersalSpaseName
+            };
+            return View(rehersalSpace);
+        }
 
         public ActionResult About()
         {

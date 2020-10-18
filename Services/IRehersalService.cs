@@ -11,6 +11,7 @@ namespace Services
     {
         IEnumerable<RehersalSpase> GetRehersals();
         void DeleteRehersal(int rehersalSpaseID);
-
+        void UpdateRehersal(RehersalSpase rehersalSpase);
+        RehersalSpase GetRehersalByID(int rehersalSpaseID);
     }
 }

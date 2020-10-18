@@ -22,6 +22,33 @@ namespace RehersalReservation.DataAccessLayer
 
         }
 
+        public RehersalSpase GetRehersalByID(int rehersalSpaseID)
+        {
+            RehersalSpase rehersalSpase = new RehersalSpase();
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("GetRehersalByID", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter[] parameters =
+                {
+                new SqlParameter("@RehersalSpaseID", SqlDbType.Int) { Value = rehersalSpaseID}
+                };
+                cmd.Parameters.AddRange(parameters.ToArray());
+                using (SqlDataReader rdr = cmd.ExecuteReader())
+                {
+                    while (rdr.Read())
+                    {
+                        rehersalSpase.Adress = rdr["Adress"].ToString();
+                        rehersalSpase.CityID = int.Parse(rdr["CityID"].ToString());
+                        rehersalSpase.RehersalSpaseName = rdr["RehersalSpaseName"].ToString();
+                        rehersalSpase.RehersalSpaseID = int.Parse(rdr["RehersalSpaseID"].ToString());               
+                    }
+                }
+            }
+            return rehersalSpase;
+        }
+
         public List<RehersalSpase> GetRehersals()
         {
             List<RehersalSpase> rehersalSpases = new List<RehersalSpase>();
@@ -44,6 +71,18 @@ namespace RehersalReservation.DataAccessLayer
                 }
             }
             return rehersalSpases;
+        }
+
+        public void UpdateRehersal(RehersalSpase rehersalSpase)
+        {
+            SqlParameter[] parameters =
+                {
+                    new SqlParameter("@RehersalSpaseID", SqlDbType.Int) { Value = rehersalSpase.RehersalSpaseID},
+                    new SqlParameter("@RehersalSpaseName", SqlDbType.NVarChar, 50) { Value = rehersalSpase.RehersalSpaseName},
+                    new SqlParameter("@CityID", SqlDbType.Int) { Value = rehersalSpase.CityID},
+                    new SqlParameter("@Adress", SqlDbType.NVarChar, 50) { Value = rehersalSpase.Adress}
+                };
+            ExecuteProcedure("UpdateRehersal", parameters);
         }
     }
 }
