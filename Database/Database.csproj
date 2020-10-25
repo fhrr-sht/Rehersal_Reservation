@@ -50,6 +50,11 @@
     <Content Include="2020_10_18_001 SP UpdateRehersal.sql" />
     <Content Include="2020_10_18_002 SP GetRehersalByID.sql" />
     <Content Include="2020_10_25_001 SP InsertRehersal.sql" />
+    <Content Include="2020_10_25_002 SP DeleteCity.sql" />
+    <Content Include="2020_10_25_003 SP GetCity.sql" />
+    <Content Include="2020_10_25_004 SP GetCityByID.sql" />
+    <Content Include="2020_10_25_005 SP InsertCity.sql" />
+    <Content Include="2020_10_25_006 SP UpdateCity.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
