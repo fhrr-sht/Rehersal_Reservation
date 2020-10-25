@@ -49,6 +49,16 @@ namespace Services
             return rehersalSpaces;
         }
 
+        public void InsertRehersal(RehersalSpase rehersalSpase)
+        {
+            rehersalRepository.InsertRehersal(new RehersalReservation.DataAccessLayer.Models.RehersalSpase
+            {
+                Adress = rehersalSpase.Adress,
+                CityID = rehersalSpase.CityID,             
+                RehersalSpaseName = rehersalSpase.RehersalSpaseName
+            });               
+        }
+
         public void UpdateRehersal(RehersalSpase rehersalSpase)
         {
             rehersalRepository.UpdateRehersal(new RehersalReservation.DataAccessLayer.Models.RehersalSpase
@@ -57,8 +67,7 @@ namespace Services
                 CityID = rehersalSpase.CityID,
                 RehersalSpaseID = rehersalSpase.RehersalSpaseID,
                 RehersalSpaseName = rehersalSpase.RehersalSpaseName
-            }
-                );
+            });              
         }
     }
 }

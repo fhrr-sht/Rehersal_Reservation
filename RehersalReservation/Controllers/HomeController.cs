@@ -59,7 +59,24 @@ namespace RehersalReservation.Controllers
             };
             return View(rehersalSpace);
         }
+        [HttpGet]
+        public ActionResult Add()
+        {            
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult Add(RehersalSpace rehersalSpace)
+        {
+            rehersalService.InsertRehersal(new RehersalSpase
+            {
+                Adress = rehersalSpace.Adress,
+                CityID = rehersalSpace.CityID,
+                RehersalSpaseID = rehersalSpace.RehersalSpaseID,
+                RehersalSpaseName = rehersalSpace.RehersalSpaseName
+            });
+            return RedirectToAction("Index");
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

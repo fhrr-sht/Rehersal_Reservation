@@ -73,6 +73,17 @@ namespace RehersalReservation.DataAccessLayer
             return rehersalSpases;
         }
 
+        public void InsertRehersal(RehersalSpase rehersalSpase)
+        {
+            SqlParameter[] parameters =
+                {
+                    new SqlParameter("@RehersalSpaseName", SqlDbType.NVarChar, 50) { Value = rehersalSpase.RehersalSpaseName},
+                    new SqlParameter("@CityID", SqlDbType.Int) { Value = rehersalSpase.CityID},
+                    new SqlParameter("@Adress", SqlDbType.NVarChar, 50) { Value = rehersalSpase.Adress}
+                };
+            ExecuteProcedure("InsertRehersal", parameters);
+        }
+
         public void UpdateRehersal(RehersalSpase rehersalSpase)
         {
             SqlParameter[] parameters =

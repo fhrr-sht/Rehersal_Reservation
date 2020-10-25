@@ -13,5 +13,6 @@ namespace Services
         void DeleteRehersal(int rehersalSpaseID);
         void UpdateRehersal(RehersalSpase rehersalSpase);
         RehersalSpase GetRehersalByID(int rehersalSpaseID);
+        void InsertRehersal(RehersalSpase rehersalSpase);
     }
 }
