@@ -22,6 +22,7 @@ namespace RehersalReservation
             container.RegisterType<IRehersalRepository, RehersalRepository>();
             container.RegisterType<IRehersalService, RehersalService>();
             container.RegisterType<ICityRepository, CityRepository>();
+            container.RegisterType<ICityService, CityService>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

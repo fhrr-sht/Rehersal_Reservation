@@ -1,13 +1,13 @@
-﻿using RehersalReservation.DataAccessLayer.Models;
+﻿using Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RehersalReservation.DataAccessLayer.Contracts
+namespace Services
 {
-    public interface ICityRepository
+    public interface ICityService
     {
         List<City> GetCities();
         void DeleteCity(int cityID);

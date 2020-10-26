@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CityService.cs" />
+    <Compile Include="ICityService.cs" />
     <Compile Include="IRehersalService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RehersalService.cs" />
