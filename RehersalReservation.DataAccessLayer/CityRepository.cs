@@ -14,7 +14,11 @@ namespace RehersalReservation.DataAccessLayer
     {
         public void DeleteCity(int cityID)
         {
-            throw new NotImplementedException();
+            SqlParameter[] parameters =
+              {
+                new SqlParameter("@CityID", SqlDbType.Int) { Value = cityID}
+                };
+            ExecuteProcedure("DeleteCity", parameters);
         }
 
         public List<City> GetCities()
@@ -66,12 +70,21 @@ namespace RehersalReservation.DataAccessLayer
 
         public void InsertCity(City city)
         {
-            throw new NotImplementedException();
+            SqlParameter[] parameters =
+               {
+                     new SqlParameter("@CityName", SqlDbType.NVarChar, 50) { Value =  city.CityName}
+                };
+            ExecuteProcedure("InsertCity", parameters);
         }
 
         public void UpdateCity(City city)
         {
-            throw new NotImplementedException();
+            SqlParameter[] parameters =
+                {
+                    new SqlParameter("@CityName", SqlDbType.NVarChar, 50) { Value =  city.CityName},
+                    new SqlParameter("@CityID", SqlDbType.Int) { Value =  city.CityID},
+                };
+            ExecuteProcedure("UpdateCity", parameters);
         }
     }
 }

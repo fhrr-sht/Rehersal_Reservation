@@ -25,7 +25,7 @@ namespace Services
             IEnumerable<RehersalReservation.DataAccessLayer.Models.City> data = this.cityRepository.GetCities();
             List<City> cities = data.Select(o =>
             new City
-            {            
+            {
                 CityID = o.CityID,
                 CityName = o.CityName
             }).ToList();
@@ -45,12 +45,20 @@ namespace Services
 
         public void InsertCity(City city)
         {
-            throw new NotImplementedException();
+            cityRepository.InsertCity(new RehersalReservation.DataAccessLayer.Models.City
+            {               
+                CityID = city.CityID,
+                CityName = city.CityName
+            });
         }
 
         public void UpdateCity(City city)
         {
-            throw new NotImplementedException();
+            cityRepository.UpdateCity(new RehersalReservation.DataAccessLayer.Models.City
+            {
+                CityID = city.CityID,
+                CityName = city.CityName
+            });
         }
     }
 }

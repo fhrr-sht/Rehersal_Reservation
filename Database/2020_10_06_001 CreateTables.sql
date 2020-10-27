@@ -6,7 +6,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[City](
-	[CityID] [int] NOT NULL,
+	[CityID] [int] IDENTITY(1,1) NOT NULL,
 	[CityName] [nvarchar](50) NULL,
  CONSTRAINT [PK_City] PRIMARY KEY CLUSTERED 
 (

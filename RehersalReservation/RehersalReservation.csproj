@@ -191,6 +191,8 @@
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Home\Add.cshtml" />
     <Content Include="Views\City\Cities.cshtml" />
+    <Content Include="Views\City\Create.cshtml" />
+    <Content Include="Views\City\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
