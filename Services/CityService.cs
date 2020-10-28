@@ -15,14 +15,14 @@ namespace Services
         {
             this.cityRepository = cityRepository;
         }
-        public void DeleteCity(int cityID)
+        public async Task DeleteCity(int cityID)
         {
-            cityRepository.DeleteCity(cityID);
+           await cityRepository.DeleteCity(cityID);
         }
 
-        public List<City> GetCities()
+        public async Task<List<City>> GetCities()
         {
-            IEnumerable<RehersalReservation.DataAccessLayer.Models.City> data = this.cityRepository.GetCities();
+            IEnumerable<RehersalReservation.DataAccessLayer.Models.City> data = await this.cityRepository.GetCities();
             List<City> cities = data.Select(o =>
             new City
             {
@@ -32,9 +32,9 @@ namespace Services
             return cities;
         }
 
-        public City GetCityByID(int cityID)
+        public async Task<City> GetCityByID(int cityID)
         {
-            RehersalReservation.DataAccessLayer.Models.City data = this.cityRepository.GetCityByID(cityID);
+            RehersalReservation.DataAccessLayer.Models.City data = await this.cityRepository.GetCityByID(cityID);
             City city = new City
             {
                 CityID = data.CityID,

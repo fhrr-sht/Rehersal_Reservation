@@ -19,7 +19,7 @@ namespace RehersalReservation.DataAccessLayer
         {
             this.connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Rehersal"].ConnectionString;
         }
-        public object ExecuteProcedure(string procedureName, IEnumerable<SqlParameter> parameters,
+        public async Task<object> ExecuteProcedure(string procedureName, IEnumerable<SqlParameter> parameters,
                                       int commandTimeout = 45)
         {
             SqlConnection connection = new SqlConnection(connectionString);
@@ -38,7 +38,7 @@ namespace RehersalReservation.DataAccessLayer
                     sqlCommand.Parameters.AddRange(parameters.ToArray());
                 }
 
-                result = sqlCommand.ExecuteScalar();
+                result = await sqlCommand.ExecuteScalarAsync();
             }
             finally
             {

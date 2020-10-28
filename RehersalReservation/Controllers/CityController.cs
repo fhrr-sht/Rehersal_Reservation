@@ -3,6 +3,7 @@ using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -16,9 +17,9 @@ namespace RehersalReservation.Controllers
             this.cityService = cityService;
         }
         // GET: City
-        public ActionResult Cities()
+        public async Task<ActionResult> Cities()
         {
-            IEnumerable<Entity.City> data = this.cityService.GetCities();
+            IEnumerable<Entity.City> data = await this.cityService.GetCities();
             IEnumerable<City> cities = data.Select(o =>
             new City
             {
@@ -34,7 +35,7 @@ namespace RehersalReservation.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(City city)
+        public async Task<ActionResult> Create(City city)
         {
             cityService.InsertCity(new Entity.City
             {
@@ -43,7 +44,7 @@ namespace RehersalReservation.Controllers
             return RedirectToAction("Cities");
         }
         [HttpPost]
-        public ActionResult Edit(City city)
+        public async Task<ActionResult> Edit(City city)
         {
             cityService.UpdateCity(new Entity.City
             {
@@ -53,9 +54,9 @@ namespace RehersalReservation.Controllers
             return RedirectToAction("Cities");
         }
         [HttpGet]
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            Entity.City data = this.cityService.GetCityByID(id);
+            Entity.City data = await this.cityService.GetCityByID(id);
             City city = new City
             {
                 CityID = data.CityID,
@@ -64,9 +65,9 @@ namespace RehersalReservation.Controllers
             return View(city);
 
         }
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            cityService.DeleteCity(id);
+            await cityService.DeleteCity(id);
             return RedirectToAction("Cities");
         }
     }

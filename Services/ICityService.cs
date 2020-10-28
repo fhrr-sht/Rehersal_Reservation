@@ -9,10 +9,10 @@ namespace Services
 {
     public interface ICityService
     {
-        List<City> GetCities();
-        void DeleteCity(int cityID);
+        Task<List<City>> GetCities();
+        Task DeleteCity(int cityID);
         void UpdateCity(City city);
-        City GetCityByID(int cityID);
+        Task<City> GetCityByID(int cityID);
         void InsertCity(City city);
     }
 }

@@ -12,16 +12,16 @@ namespace RehersalReservation.DataAccessLayer
 {
     public class CityRepository : BaseRepository, ICityRepository
     {
-        public void DeleteCity(int cityID)
+        public async Task DeleteCity(int cityID)
         {
             SqlParameter[] parameters =
               {
                 new SqlParameter("@CityID", SqlDbType.Int) { Value = cityID}
                 };
-            ExecuteProcedure("DeleteCity", parameters);
+            await ExecuteProcedure("DeleteCity", parameters);
         }
 
-        public List<City> GetCities()
+        public async Task<List<City>> GetCities()
         {
             List<City> cities = new List<City>();
             using (SqlConnection conn = new SqlConnection(ConnectionString))
@@ -29,7 +29,7 @@ namespace RehersalReservation.DataAccessLayer
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("GetCity", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                using (SqlDataReader rdr = cmd.ExecuteReader())
+                using (SqlDataReader rdr = await cmd.ExecuteReaderAsync())
                 {
                     while (rdr.Read())
                     {
@@ -43,7 +43,7 @@ namespace RehersalReservation.DataAccessLayer
             return cities;
         }
 
-        public City GetCityByID(int cityID)
+        public async Task<City> GetCityByID(int cityID)
         {
             City city = new City();
             using (SqlConnection conn = new SqlConnection(ConnectionString))
