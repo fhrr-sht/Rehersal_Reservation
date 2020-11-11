@@ -37,7 +37,7 @@ namespace RehersalReservation.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(City city)
         {
-            cityService.InsertCity(new Entity.City
+            await cityService.InsertCity(new Entity.City
             {
                 CityName = city.CityName
             });
@@ -46,7 +46,7 @@ namespace RehersalReservation.Controllers
         [HttpPost]
         public async Task<ActionResult> Edit(City city)
         {
-            cityService.UpdateCity(new Entity.City
+            await cityService.UpdateCity(new Entity.City
             {
                 CityID = city.CityID,
                 CityName = city.CityName

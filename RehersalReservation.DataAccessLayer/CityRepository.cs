@@ -56,7 +56,7 @@ namespace RehersalReservation.DataAccessLayer
                 new SqlParameter("@CityID", SqlDbType.Int) { Value = cityID}
                 };
                 cmd.Parameters.AddRange(parameters.ToArray());
-                using (SqlDataReader rdr = cmd.ExecuteReader())
+                using (SqlDataReader rdr = await cmd.ExecuteReaderAsync())
                 {
                     while (rdr.Read())
                     {
@@ -68,23 +68,23 @@ namespace RehersalReservation.DataAccessLayer
             return city;
         }
 
-        public void InsertCity(City city)
+        public async Task InsertCity(City city)
         {
             SqlParameter[] parameters =
                {
                      new SqlParameter("@CityName", SqlDbType.NVarChar, 50) { Value =  city.CityName}
                 };
-            ExecuteProcedure("InsertCity", parameters);
+            await ExecuteProcedure("InsertCity", parameters);
         }
 
-        public void UpdateCity(City city)
+        public async Task UpdateCity(City city)
         {
             SqlParameter[] parameters =
                 {
                     new SqlParameter("@CityName", SqlDbType.NVarChar, 50) { Value =  city.CityName},
                     new SqlParameter("@CityID", SqlDbType.Int) { Value =  city.CityID},
                 };
-            ExecuteProcedure("UpdateCity", parameters);
+            await ExecuteProcedure("UpdateCity", parameters);
         }
     }
 }

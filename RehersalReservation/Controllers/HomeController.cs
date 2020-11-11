@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Threading.Tasks;
 
 namespace RehersalReservation.Controllers
 {
@@ -16,9 +17,9 @@ namespace RehersalReservation.Controllers
         {
             this.rehersalService = rehersalService;
         }
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            IEnumerable<Entity.RehersalSpase> data = this.rehersalService.GetRehersals();
+            IEnumerable<Entity.RehersalSpase> data = await this.rehersalService.GetRehersals();
             IEnumerable<RehersalSpace> rehersalSpaces = data.Select(o =>
             new RehersalSpace
             {
@@ -29,15 +30,15 @@ namespace RehersalReservation.Controllers
             }).ToList();
             return View(rehersalSpaces);
         }
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            rehersalService.DeleteRehersal(id);
+            await rehersalService.DeleteRehersal(id);
             return RedirectToAction("Index");
         }
         [HttpPost]
-        public ActionResult Edit(RehersalSpace rehersalSpace)
+        public async Task<ActionResult> Edit(RehersalSpace rehersalSpace)
         {
-            rehersalService.UpdateRehersal(new RehersalSpase
+            await rehersalService.UpdateRehersal(new RehersalSpase
             {
                 Adress = rehersalSpace.Adress,
                 CityID = rehersalSpace.CityID,
@@ -47,9 +48,9 @@ namespace RehersalReservation.Controllers
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            Entity.RehersalSpase data = this.rehersalService.GetRehersalByID(id);
+            Entity.RehersalSpase data = await this.rehersalService.GetRehersalByID(id);
             RehersalSpace rehersalSpace= new RehersalSpace
             {
                 Adress = data.Adress,
@@ -66,9 +67,9 @@ namespace RehersalReservation.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(RehersalSpace rehersalSpace)
+        public async Task<ActionResult> Add(RehersalSpace rehersalSpace)
         {
-            rehersalService.InsertRehersal(new RehersalSpase
+            await rehersalService.InsertRehersal(new RehersalSpase
             {
                 Adress = rehersalSpace.Adress,
                 CityID = rehersalSpace.CityID,

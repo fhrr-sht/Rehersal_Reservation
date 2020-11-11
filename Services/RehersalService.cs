@@ -17,14 +17,14 @@ namespace Services
             this.rehersalRepository = rehersalRepository;
         }
 
-        public void DeleteRehersal(int rehersalSpaseID)
+        public async Task DeleteRehersal(int rehersalSpaseID)
         {
-            rehersalRepository.DeleteRehersal(rehersalSpaseID);
+            await rehersalRepository.DeleteRehersal(rehersalSpaseID);
         }
 
-        public RehersalSpase GetRehersalByID(int rehersalSpaseID)
+        public async Task<RehersalSpase>  GetRehersalByID(int rehersalSpaseID)
         {
-            RehersalReservation.DataAccessLayer.Models.RehersalSpase data = this.rehersalRepository.GetRehersalByID(rehersalSpaseID);
+             RehersalReservation.DataAccessLayer.Models.RehersalSpase data = await this.rehersalRepository.GetRehersalByID(rehersalSpaseID);
             RehersalSpase rehersalSpace = new RehersalSpase
             {
                 Adress = data.Adress,
@@ -35,9 +35,9 @@ namespace Services
             return rehersalSpace;
         }
 
-        public IEnumerable<RehersalSpase> GetRehersals()
+        public async Task<IEnumerable<RehersalSpase>> GetRehersals()
         {
-            IEnumerable<RehersalReservation.DataAccessLayer.Models.RehersalSpase> data = this.rehersalRepository.GetRehersals();
+            IEnumerable<RehersalReservation.DataAccessLayer.Models.RehersalSpase> data = await this.rehersalRepository.GetRehersals();
             IEnumerable<RehersalSpase> rehersalSpaces = data.Select(o =>
             new RehersalSpase
             {
@@ -49,9 +49,9 @@ namespace Services
             return rehersalSpaces;
         }
 
-        public void InsertRehersal(RehersalSpase rehersalSpase)
+        public async Task InsertRehersal(RehersalSpase rehersalSpase)
         {
-            rehersalRepository.InsertRehersal(new RehersalReservation.DataAccessLayer.Models.RehersalSpase
+            await rehersalRepository.InsertRehersal(new RehersalReservation.DataAccessLayer.Models.RehersalSpase
             {
                 Adress = rehersalSpase.Adress,
                 CityID = rehersalSpase.CityID,             
@@ -59,9 +59,9 @@ namespace Services
             });               
         }
 
-        public void UpdateRehersal(RehersalSpase rehersalSpase)
+        public async Task UpdateRehersal(RehersalSpase rehersalSpase)
         {
-            rehersalRepository.UpdateRehersal(new RehersalReservation.DataAccessLayer.Models.RehersalSpase
+            await rehersalRepository.UpdateRehersal(new RehersalReservation.DataAccessLayer.Models.RehersalSpase
             {
                 Adress = rehersalSpase.Adress,
                 CityID = rehersalSpase.CityID,

@@ -43,18 +43,18 @@ namespace Services
             return city;
         }
 
-        public void InsertCity(City city)
+        public async Task  InsertCity(City city)
         {
-            cityRepository.InsertCity(new RehersalReservation.DataAccessLayer.Models.City
+            await cityRepository.InsertCity(new RehersalReservation.DataAccessLayer.Models.City
             {               
                 CityID = city.CityID,
                 CityName = city.CityName
             });
         }
 
-        public void UpdateCity(City city)
+        public async Task UpdateCity(City city)
         {
-            cityRepository.UpdateCity(new RehersalReservation.DataAccessLayer.Models.City
+            await cityRepository.UpdateCity(new RehersalReservation.DataAccessLayer.Models.City
             {
                 CityID = city.CityID,
                 CityName = city.CityName

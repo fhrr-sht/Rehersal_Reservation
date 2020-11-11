@@ -11,8 +11,8 @@ namespace RehersalReservation.DataAccessLayer.Contracts
     {
         Task<List<City>> GetCities();
         Task DeleteCity(int cityID);
-        void UpdateCity(City city);
+        Task UpdateCity(City city);
         Task<City> GetCityByID(int cityID);
-        void InsertCity(City city);
+        Task InsertCity(City city);
     }
 }

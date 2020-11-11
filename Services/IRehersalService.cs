@@ -9,10 +9,10 @@ namespace Services
 {
     public interface IRehersalService
     {
-        IEnumerable<RehersalSpase> GetRehersals();
-        void DeleteRehersal(int rehersalSpaseID);
-        void UpdateRehersal(RehersalSpase rehersalSpase);
-        RehersalSpase GetRehersalByID(int rehersalSpaseID);
-        void InsertRehersal(RehersalSpase rehersalSpase);
+        Task <IEnumerable<RehersalSpase>> GetRehersals();
+        Task DeleteRehersal(int rehersalSpaseID);
+        Task UpdateRehersal(RehersalSpase rehersalSpase);
+        Task <RehersalSpase> GetRehersalByID(int rehersalSpaseID);
+        Task InsertRehersal(RehersalSpase rehersalSpase);
     }
 }

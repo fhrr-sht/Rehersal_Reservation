@@ -12,17 +12,17 @@ namespace RehersalReservation.DataAccessLayer
 {
     public class RehersalRepository : BaseRepository, IRehersalRepository
     {
-        public void DeleteRehersal(int rehersalSpaseID)
+        public async Task DeleteRehersal(int rehersalSpaseID)
         {
             SqlParameter[] parameters =
                 {
                 new SqlParameter("@RehersalSpaseID", SqlDbType.Int) { Value = rehersalSpaseID}
                 };
-            ExecuteProcedure("DeleteRehersal", parameters);
+            await ExecuteProcedure("DeleteRehersal", parameters);
 
         }
 
-        public RehersalSpase GetRehersalByID(int rehersalSpaseID)
+        public async Task<RehersalSpase>  GetRehersalByID(int rehersalSpaseID)
         {
             RehersalSpase rehersalSpase = new RehersalSpase();
             using (SqlConnection conn = new SqlConnection(ConnectionString))
@@ -35,7 +35,7 @@ namespace RehersalReservation.DataAccessLayer
                 new SqlParameter("@RehersalSpaseID", SqlDbType.Int) { Value = rehersalSpaseID}
                 };
                 cmd.Parameters.AddRange(parameters.ToArray());
-                using (SqlDataReader rdr = cmd.ExecuteReader())
+                using (SqlDataReader rdr = await cmd.ExecuteReaderAsync())
                 {
                     while (rdr.Read())
                     {
@@ -49,7 +49,7 @@ namespace RehersalReservation.DataAccessLayer
             return rehersalSpase;
         }
 
-        public List<RehersalSpase> GetRehersals()
+        public async Task<List<RehersalSpase>> GetRehersals()
         {
             List<RehersalSpase> rehersalSpases = new List<RehersalSpase>();
             using (SqlConnection conn = new SqlConnection(ConnectionString))
@@ -57,7 +57,7 @@ namespace RehersalReservation.DataAccessLayer
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("GetRehersal", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                using (SqlDataReader rdr = cmd.ExecuteReader())
+                using (SqlDataReader rdr = await cmd.ExecuteReaderAsync())
                 {
                     while (rdr.Read())
                     {
@@ -73,7 +73,7 @@ namespace RehersalReservation.DataAccessLayer
             return rehersalSpases;
         }
 
-        public void InsertRehersal(RehersalSpase rehersalSpase)
+        public async Task InsertRehersal(RehersalSpase rehersalSpase)
         {
             SqlParameter[] parameters =
                 {
@@ -81,10 +81,10 @@ namespace RehersalReservation.DataAccessLayer
                     new SqlParameter("@CityID", SqlDbType.Int) { Value = rehersalSpase.CityID},
                     new SqlParameter("@Adress", SqlDbType.NVarChar, 50) { Value = rehersalSpase.Adress}
                 };
-            ExecuteProcedure("InsertRehersal", parameters);
+            await ExecuteProcedure("InsertRehersal", parameters);
         }
 
-        public void UpdateRehersal(RehersalSpase rehersalSpase)
+        public async Task UpdateRehersal(RehersalSpase rehersalSpase)
         {
             SqlParameter[] parameters =
                 {
@@ -93,7 +93,7 @@ namespace RehersalReservation.DataAccessLayer
                     new SqlParameter("@CityID", SqlDbType.Int) { Value = rehersalSpase.CityID},
                     new SqlParameter("@Adress", SqlDbType.NVarChar, 50) { Value = rehersalSpase.Adress}
                 };
-            ExecuteProcedure("UpdateRehersal", parameters);
+            await ExecuteProcedure("UpdateRehersal", parameters);
         }
     }
 }
