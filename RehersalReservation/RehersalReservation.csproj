@@ -138,11 +138,13 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\RehersalSpace.cs" />
+    <Compile Include="Models\Room.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +195,9 @@
     <Content Include="Views\City\Cities.cshtml" />
     <Content Include="Views\City\Create.cshtml" />
     <Content Include="Views\City\Edit.cshtml" />
+    <Content Include="Views\Room\Rooms.cshtml" />
+    <Content Include="Views\Room\Create.cshtml" />
+    <Content Include="Views\Room\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

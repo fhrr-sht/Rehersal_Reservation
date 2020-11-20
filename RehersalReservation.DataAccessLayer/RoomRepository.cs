@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace RehersalReservation.DataAccessLayer
 {
-    class RoomRepository : BaseRepository, IRoomRepository
+    public class RoomRepository : BaseRepository, IRoomRepository
     {
         public async Task DeleteRoom(int roomID)
         {
@@ -36,7 +36,7 @@ namespace RehersalReservation.DataAccessLayer
                         Room room = new Room();
                         room.RehersalRoomID = int.Parse(rdr["RehersalRoomID"].ToString());
                         room.RehersalRoomName = rdr["RehersalRoomName"].ToString();
-                        room.RehersalRoomID = int.Parse(rdr["RehersalRoomSize"].ToString());
+                        room.RehersalRoomSize = int.Parse(rdr["RehersalRoomSize"].ToString());
                         room.RehersalSpaseID = int.Parse(rdr["RehersalSpaseID"].ToString());
                         rooms.Add(room);
                     }
