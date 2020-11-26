@@ -94,5 +94,34 @@ namespace RehersalReservation.DataAccessLayer
                 };
             await ExecuteProcedure("UpdateRoom", parameters);
         }
+
+        public async Task<List<Room>> GetRoomByRehersalID(int rehersalSpaceID)
+        {
+            List<Room> rooms = new List<Room>();
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("GetRoomByRehersalID", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter[] parameters =
+                {
+                new SqlParameter("@RehersalSpaceID", SqlDbType.Int) { Value = rehersalSpaceID}
+                };
+                cmd.Parameters.AddRange(parameters.ToArray());
+                using (SqlDataReader rdr = await cmd.ExecuteReaderAsync())
+                {
+                    while (rdr.Read())
+                    {
+                        Room room = new Room();
+                        room.RehersalRoomID = int.Parse(rdr["RehersalRoomID"].ToString());
+                        room.RehersalRoomName = rdr["RehersalRoomName"].ToString();
+                        room.RehersalRoomSize = int.Parse(rdr["RehersalRoomSize"].ToString());
+                        room.RehersalSpaseID = int.Parse(rdr["RehersalSpaseID"].ToString());
+                        rooms.Add(room);
+                    }
+                }
+            }
+            return rooms;
+        }
     }
 }

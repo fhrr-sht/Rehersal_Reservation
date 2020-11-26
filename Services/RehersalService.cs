@@ -22,6 +22,20 @@ namespace Services
             await rehersalRepository.DeleteRehersal(rehersalSpaseID);
         }
 
+        public async Task<List<RehersalSpase>> GetRehersalByCityID(int cityID)
+        {
+            IEnumerable<RehersalReservation.DataAccessLayer.Models.RehersalSpase> data = await this.rehersalRepository.GetRehersalByCityID(cityID);
+            IEnumerable<RehersalSpase> rehersalSpaces = data.Select(o =>
+            new RehersalSpase
+            {
+                Adress = o.Adress,
+                CityID = o.CityID,
+                RehersalSpaseID = o.RehersalSpaseID,
+                RehersalSpaseName = o.RehersalSpaseName
+            }).ToList();
+            return rehersalSpaces.ToList();
+        }
+
         public async Task<RehersalSpase>  GetRehersalByID(int rehersalSpaseID)
         {
              RehersalReservation.DataAccessLayer.Models.RehersalSpase data = await this.rehersalRepository.GetRehersalByID(rehersalSpaseID);

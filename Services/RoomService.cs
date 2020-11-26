@@ -33,6 +33,20 @@ namespace Services
             return rehersalRoom;
         }
 
+        public async Task<List<Room>> GetRoomByRehersalID(int rehersalSpaceID)
+        {
+            IEnumerable<RehersalReservation.DataAccessLayer.Models.Room> data = await this.roomRepository.GetRoomByRehersalID(rehersalSpaceID);
+            List<Room> rooms = data.Select(o =>
+            new Room
+            {
+                RehersalRoomID = o.RehersalRoomID,
+                RehersalSpaseID = o.RehersalSpaseID,
+                RehersalRoomName = o.RehersalRoomName,
+                RehersalRoomSize = o.RehersalRoomSize
+            }).ToList();
+            return rooms;
+        }
+
         public async Task<List<Room>> GetRooms()
         {
             IEnumerable<RehersalReservation.DataAccessLayer.Models.Room> data = await this.roomRepository.GetRooms();

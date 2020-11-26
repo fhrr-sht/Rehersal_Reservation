@@ -78,5 +78,21 @@ namespace RehersalReservation.Controllers
             await roomService.DeleteRoom(id);
             return RedirectToAction("Rooms");
         }
+        [HttpGet]
+        public async Task<ActionResult> GetRoomByRehersalID(int rehersalSpaceID)
+        {
+            {
+                IEnumerable<Entity.Room> data = await this.roomService.GetRoomByRehersalID(rehersalSpaceID);
+                IEnumerable<Room> rooms = data.Select(o =>
+                new Room
+                {
+                    RehersalRoomID = o.RehersalRoomID,
+                    RehersalSpaseID = o.RehersalSpaseID,
+                    RehersalRoomName = o.RehersalRoomName,
+                    RehersalRoomSize = o.RehersalRoomSize
+                }).ToList();
+                return View(rooms);
+            }
+        }
     }
 }

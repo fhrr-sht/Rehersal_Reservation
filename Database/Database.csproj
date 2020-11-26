@@ -60,6 +60,8 @@
     <Content Include="2020_11_11_003 SP GetRoomByID.sql" />
     <Content Include="2020_11_11_004 SP GetRoom.sql" />
     <Content Include="2020_11_11_005 SP DeleteRoom.sql" />
+    <Content Include="2020_11_26_001 SP GetRehersalByCityID.sql" />
+    <Content Include="2020_11_26_002 SP GetRoomByRehersalID.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

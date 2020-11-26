@@ -198,6 +198,8 @@
     <Content Include="Views\Room\Rooms.cshtml" />
     <Content Include="Views\Room\Create.cshtml" />
     <Content Include="Views\Room\Edit.cshtml" />
+    <Content Include="Views\Home\GetRehersalByCityID.cshtml" />
+    <Content Include="Views\Room\GetRoomByRehersalID.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

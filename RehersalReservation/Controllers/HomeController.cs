@@ -89,5 +89,19 @@ namespace RehersalReservation.Controllers
             ViewBag.Message = "Your contact page.";
             return View();
         }
+        [HttpGet]
+        public async Task<ActionResult> GetRehersalByCityID(int cityID)
+        {
+            IEnumerable<Entity.RehersalSpase> data = await this.rehersalService.GetRehersalByCityID(cityID);
+            IEnumerable<RehersalSpace> rehersalSpaces = data.Select(o =>
+            new RehersalSpace
+            {
+                Adress = o.Adress,
+                CityID = o.CityID,
+                RehersalSpaseID = o.RehersalSpaseID,
+                RehersalSpaseName = o.RehersalSpaseName
+            }).ToList();
+            return View(rehersalSpaces);
+        }
     }
 }

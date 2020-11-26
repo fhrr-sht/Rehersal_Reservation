@@ -1,0 +1,53 @@
+﻿@model IEnumerable<RehersalReservation.Models.RehersalSpace>
+
+@{
+    ViewBag.Title = "GetRehersalByCityID";
+}
+
+<h2>GetRehersalByCityID</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RehersalSpaseID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RehersalSpaseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CityID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adress)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RehersalSpaseID)
+            </td>
+            <td>
+
+                @Html.ActionLink(item.RehersalSpaseName, "GetRoomByRehersalID", "Room", new { rehersalSpaceID = item.RehersalSpaseID }, null)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CityID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adress)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RehersalSpaseID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RehersalSpaseID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RehersalSpaseID })
+            </td>
+        </tr>
+    }
+
+</table>

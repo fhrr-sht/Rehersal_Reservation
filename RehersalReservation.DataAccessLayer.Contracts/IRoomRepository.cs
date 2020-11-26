@@ -14,5 +14,6 @@ namespace RehersalReservation.DataAccessLayer.Contracts
         Task UpdateRoom(Room room);
         Task<Room> GetRoomByID(int roomID);
         Task InsertRoom(Room room);
+        Task<List<Room>> GetRoomByRehersalID(int rehersalSpaceID);
     }
 }

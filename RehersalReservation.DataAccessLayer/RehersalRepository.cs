@@ -22,6 +22,35 @@ namespace RehersalReservation.DataAccessLayer
 
         }
 
+        public async Task<List<RehersalSpase>> GetRehersalByCityID(int cityID)
+        {
+            List<RehersalSpase> rehersalSpases = new List<RehersalSpase>();
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("GetRehersalByCityID", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter[] parameters =
+                {
+                new SqlParameter("@CityID", SqlDbType.Int) { Value = cityID}
+                };
+                cmd.Parameters.AddRange(parameters.ToArray());
+                using (SqlDataReader rdr = await cmd.ExecuteReaderAsync())
+                {
+                    while (rdr.Read())
+                    {
+                        RehersalSpase rehersalSpase = new RehersalSpase();
+                        rehersalSpase.Adress = rdr["Adress"].ToString();
+                        rehersalSpase.CityID = int.Parse(rdr["CityID"].ToString());
+                        rehersalSpase.RehersalSpaseName = rdr["RehersalSpaseName"].ToString();
+                        rehersalSpase.RehersalSpaseID = int.Parse(rdr["RehersalSpaseID"].ToString());
+                        rehersalSpases.Add(rehersalSpase);
+                    }
+                }
+            }
+            return rehersalSpases;
+        }
+
         public async Task<RehersalSpase>  GetRehersalByID(int rehersalSpaseID)
         {
             RehersalSpase rehersalSpase = new RehersalSpase();

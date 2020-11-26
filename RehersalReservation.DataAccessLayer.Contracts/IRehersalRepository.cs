@@ -14,5 +14,6 @@ namespace RehersalReservation.DataAccessLayer.Contracts
         Task UpdateRehersal(RehersalSpase rehersalSpase);
         Task<RehersalSpase>  GetRehersalByID(int rehersalSpaseID);
         Task InsertRehersal(RehersalSpase rehersalSpase);
+        Task<List<RehersalSpase>> GetRehersalByCityID(int cityID);
     }
 }
