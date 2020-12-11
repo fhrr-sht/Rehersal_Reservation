@@ -17,17 +17,19 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink(item.CityName, "GetRehersalByCityID", "Home", new { cityID = item.CityID }, null)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CityID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CityID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CityID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.CityName, "GetRehersalByCityID", "Home", new { cityID = item.CityID }, null)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CityID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CityID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CityID }, new { onclick = "return confirm('Вы действительно хотите удалить?');" })
+            </td>
+        </tr>
+    }
 
 </table>
+@Html.Hidden("RedirectTo", Url.Action("Cities", "City"))

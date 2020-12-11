@@ -13,9 +13,11 @@ namespace RehersalReservation.Controllers
     public class HomeController : Controller
     {
         private IRehersalService rehersalService;
-        public HomeController(IRehersalService rehersalService)
+        private IRoomService roomService;     
+        public HomeController(IRehersalService rehersalService, IRoomService roomService)
         {
             this.rehersalService = rehersalService;
+            this.roomService = roomService;
         }
         public async Task<ActionResult> Index()
         {
@@ -32,7 +34,19 @@ namespace RehersalReservation.Controllers
         }
         public async Task<ActionResult> Delete(int id)
         {
-            await rehersalService.DeleteRehersal(id);
+            IEnumerable<Entity.Room> data = await this.roomService.GetRoomByRehersalID(id);
+            if (data.Count() == 0)
+            {
+                await rehersalService.DeleteRehersal(id);
+            }
+            else
+            {
+                return Content(@"<script language='javascript' type='text/javascript'>
+                    alert('Нельзя удалить связанный объект'); 
+                    let url = document.getElementById('RedirectTo').val();
+                    location.href = url;
+                    </script>");
+            }          
             return RedirectToAction("Index");
         }
         [HttpPost]

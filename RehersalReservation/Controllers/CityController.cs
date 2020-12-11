@@ -12,9 +12,11 @@ namespace RehersalReservation.Controllers
     public class CityController : Controller
     {
         private ICityService cityService;
-        public CityController(ICityService cityService)
+        private IRehersalService rehersalService;
+        public CityController(ICityService cityService, IRehersalService rehersalService)
         {
             this.cityService = cityService;
+            this.rehersalService = rehersalService;
         }
         // GET: City
         public async Task<ActionResult> Cities()
@@ -67,7 +69,19 @@ namespace RehersalReservation.Controllers
         }
         public async Task<ActionResult> Delete(int id)
         {
-            await cityService.DeleteCity(id);
+            IEnumerable<Entity.RehersalSpase> data = await this.rehersalService.GetRehersalByCityID(id);
+            if (data.Count() == 0)
+            {
+                await cityService.DeleteCity(id);
+            }
+            else
+            {
+                return Content(@"<script language='javascript' type='text/javascript'>
+                    alert('Нельзя удалить связанный объект'); 
+                    let url = document.getElementById('RedirectTo').val();
+                    location.href = url;
+                    </script>");
+            }
             return RedirectToAction("Cities");
         }
     }
