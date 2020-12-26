@@ -3,6 +3,7 @@ using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -40,6 +41,10 @@ namespace RehersalReservation.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(Room room)
         {
+            if (!ModelState.IsValid)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Model is bad");
+            }
             await roomService.InsertRoom(new Entity.Room
             {
                 RehersalSpaseID = room.RehersalSpaseID,
@@ -51,6 +56,10 @@ namespace RehersalReservation.Controllers
         [HttpPost]
         public async Task<ActionResult> Edit(Room room)
         {
+            if (!ModelState.IsValid)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Model is bad");
+            }
             await roomService.UpdateRoom(new Entity.Room
             {
                 RehersalRoomID = room.RehersalRoomID,
@@ -64,6 +73,10 @@ namespace RehersalReservation.Controllers
         public async Task<ActionResult> Edit(int id)
         {
             Entity.Room data = await this.roomService.GetRoomByID(id);
+            if (data == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Data not found");
+            }
             Room room = new Room
             {
                 RehersalRoomID = data.RehersalRoomID,
@@ -83,6 +96,10 @@ namespace RehersalReservation.Controllers
         {
             {
                 IEnumerable<Entity.Room> data = await this.roomService.GetRoomByRehersalID(rehersalSpaceID);
+                if (data == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Data not found");
+                }
                 IEnumerable<Room> rooms = data.Select(o =>
                 new Room
                 {

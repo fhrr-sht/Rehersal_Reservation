@@ -16,7 +16,7 @@ namespace RehersalReservation
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "City", action = "Cities", id = UrlParameter.Optional }
             );
         }
     }

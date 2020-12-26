@@ -7,14 +7,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace RehersalReservation.Controllers
 {
-    public class HomeController : Controller
+    public class RehersalController : Controller
     {
         private IRehersalService rehersalService;
         private IRoomService roomService;     
-        public HomeController(IRehersalService rehersalService, IRoomService roomService)
+        public RehersalController(IRehersalService rehersalService, IRoomService roomService)
         {
             this.rehersalService = rehersalService;
             this.roomService = roomService;
@@ -22,6 +23,10 @@ namespace RehersalReservation.Controllers
         public async Task<ActionResult> Index()
         {
             IEnumerable<Entity.RehersalSpase> data = await this.rehersalService.GetRehersals();
+            if (data == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Data not found");
+            }
             IEnumerable<RehersalSpace> rehersalSpaces = data.Select(o =>
             new RehersalSpace
             {
@@ -35,23 +40,27 @@ namespace RehersalReservation.Controllers
         public async Task<ActionResult> Delete(int id)
         {
             IEnumerable<Entity.Room> data = await this.roomService.GetRoomByRehersalID(id);
+            if (data == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Data not found");
+            }
             if (data.Count() == 0)
             {
                 await rehersalService.DeleteRehersal(id);
             }
             else
             {
-                return Content(@"<script language='javascript' type='text/javascript'>
-                    alert('Нельзя удалить связанный объект'); 
-                    let url = document.getElementById('RedirectTo').val();
-                    location.href = url;
-                    </script>");
+                return Content(@"Нельзя удалить связанный объект");
             }          
             return RedirectToAction("Index");
         }
         [HttpPost]
         public async Task<ActionResult> Edit(RehersalSpace rehersalSpace)
         {
+            if (!ModelState.IsValid)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Model is bad");
+            }
             await rehersalService.UpdateRehersal(new RehersalSpase
             {
                 Adress = rehersalSpace.Adress,
@@ -65,6 +74,10 @@ namespace RehersalReservation.Controllers
         public async Task<ActionResult> Edit(int id)
         {
             Entity.RehersalSpase data = await this.rehersalService.GetRehersalByID(id);
+            if (data == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Data not found");
+            }
             RehersalSpace rehersalSpace= new RehersalSpace
             {
                 Adress = data.Adress,
@@ -83,6 +96,10 @@ namespace RehersalReservation.Controllers
         [HttpPost]
         public async Task<ActionResult> Add(RehersalSpace rehersalSpace)
         {
+            if (!ModelState.IsValid)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Model is bad");
+            }
             await rehersalService.InsertRehersal(new RehersalSpase
             {
                 Adress = rehersalSpace.Adress,

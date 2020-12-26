@@ -64,3 +64,8 @@ E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.Tests\bin\Debug\ru\Syste
 E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.Tests\obj\Debug\RehersalReservation.Tests.csproj.CopyComplete
 E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.Tests\obj\Debug\RehersalReservation.Tests.dll
 E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.Tests\obj\Debug\RehersalReservation.Tests.pdb
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.Tests\bin\Debug\Castle.Core.dll
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.Tests\bin\Debug\Moq.dll
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.Tests\bin\Debug\Castle.Core.xml
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.Tests\bin\Debug\Moq.xml
+E:\KoPei\proga\Rehersal_Reservation\RehersalReservation.Tests\bin\Debug\System.Threading.Tasks.Extensions.xml

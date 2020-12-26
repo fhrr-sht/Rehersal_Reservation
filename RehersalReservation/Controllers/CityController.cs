@@ -3,6 +3,7 @@ using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -39,6 +40,10 @@ namespace RehersalReservation.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(City city)
         {
+            if (!ModelState.IsValid)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Model is bad");
+            }
             await cityService.InsertCity(new Entity.City
             {
                 CityName = city.CityName
@@ -48,6 +53,10 @@ namespace RehersalReservation.Controllers
         [HttpPost]
         public async Task<ActionResult> Edit(City city)
         {
+            if (!ModelState.IsValid)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Model is bad");
+            }
             await cityService.UpdateCity(new Entity.City
             {
                 CityID = city.CityID,
@@ -59,6 +68,10 @@ namespace RehersalReservation.Controllers
         public async Task<ActionResult> Edit(int id)
         {
             Entity.City data = await this.cityService.GetCityByID(id);
+            if (data == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Data not found");
+            }
             City city = new City
             {
                 CityID = data.CityID,
@@ -70,17 +83,17 @@ namespace RehersalReservation.Controllers
         public async Task<ActionResult> Delete(int id)
         {
             IEnumerable<Entity.RehersalSpase> data = await this.rehersalService.GetRehersalByCityID(id);
+            if (data == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Data not found");
+            }
             if (data.Count() == 0)
             {
                 await cityService.DeleteCity(id);
             }
             else
             {
-                return Content(@"<script language='javascript' type='text/javascript'>
-                    alert('Нельзя удалить связанный объект'); 
-                    let url = document.getElementById('RedirectTo').val();
-                    location.href = url;
-                    </script>");
+                return Content(@"Нельзя удалить связанный объект");
             }
             return RedirectToAction("Cities");
         }
