@@ -37,7 +37,7 @@ namespace RehersalReservation.Tests.Controllers
         [TestMethod]
         public async Task DeleteSuccessful()
         {
-            roomService.Setup(delete => delete.GetRoomByRehersalID(IdOne)).
+            roomService.Setup(room => room.GetRoomByRehersalID(IdOne)).
                 ReturnsAsync(new List<Entity.Room>() {
                });
             // Arrange
@@ -56,7 +56,7 @@ namespace RehersalReservation.Tests.Controllers
         [TestMethod]
         public async Task DeleteFail()
         {
-            roomService.Setup(delete => delete.GetRoomByRehersalID(IdOne)).
+            roomService.Setup(room => room.GetRoomByRehersalID(IdOne)).
                 ReturnsAsync(new List<Entity.Room>() {
                 new Entity.Room()
                 {
@@ -76,7 +76,7 @@ namespace RehersalReservation.Tests.Controllers
         [TestMethod]
         public async Task DeleteNotFound()
         {
-            roomService.Setup(delete => delete.GetRoomByRehersalID(IdOne)).
+            roomService.Setup(room => room.GetRoomByRehersalID(IdOne)).
                 ReturnsAsync(new List<Entity.Room>() {
                 new Entity.Room()
                 {
