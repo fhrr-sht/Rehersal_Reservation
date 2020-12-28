@@ -19,11 +19,15 @@ namespace RehersalReservation.Tests.Controllers
         Mock<ICityService> cityService = new Mock<ICityService>();
         const int IdOne = 1;
         const int IdTwo = 2;
+        CityController controller = null;
+        public CityControllerTest()
+        {
+            controller = new CityController(cityService.Object, rehersalService.Object);
+        }
         [TestMethod]
         public async Task Cities()
         {
             // Arrange
-            CityController controller = new CityController(cityService.Object, rehersalService.Object);
             cityService.Setup(city => city.GetCities()).
     ReturnsAsync(new List<Entity.City>()
     {
@@ -38,12 +42,12 @@ namespace RehersalReservation.Tests.Controllers
         [TestMethod]
         public async Task DeleteSuccessful()
         {
+            // Arrange
             rehersalService.Setup(rehersal => rehersal.GetRehersalByCityID(IdOne)).
                 ReturnsAsync(new List<Entity.RehersalSpase>()
                 {
                 });
-            // Arrange
-            CityController controller = new CityController(cityService.Object, rehersalService.Object);
+
 
             // Act
             RedirectToRouteResult result = await controller.Delete(IdOne) as RedirectToRouteResult;
@@ -58,6 +62,7 @@ namespace RehersalReservation.Tests.Controllers
         [TestMethod]
         public async Task DeleteFail()
         {
+            // Arrange
             rehersalService.Setup(rehersal => rehersal.GetRehersalByCityID(IdOne)).
                 ReturnsAsync(new List<Entity.RehersalSpase>() {
                 new Entity.RehersalSpase()
@@ -65,9 +70,6 @@ namespace RehersalReservation.Tests.Controllers
                     RehersalSpaseID = IdOne
                 }
             });
-            // Arrange
-            CityController controller = new CityController(cityService.Object, rehersalService.Object);
-
             // Act
             ContentResult result = await controller.Delete(IdOne) as ContentResult;
 
@@ -78,6 +80,7 @@ namespace RehersalReservation.Tests.Controllers
         [TestMethod]
         public async Task DeleteNotFound()
         {
+            // Arrange
             rehersalService.Setup(rehersal => rehersal.GetRehersalByCityID(IdOne)).
                 ReturnsAsync(new List<Entity.RehersalSpase>() {
                 new Entity.RehersalSpase()
@@ -85,15 +88,66 @@ namespace RehersalReservation.Tests.Controllers
                     RehersalSpaseID = IdOne
                 }
             });
-            // Arrange
-            CityController controller = new CityController(cityService.Object, rehersalService.Object);
-
             // Act
             HttpStatusCodeResult result = await controller.Delete(IdTwo) as HttpStatusCodeResult; ;
 
             // Assert
             Assert.IsNotNull(result);
             Assert.AreEqual(404, result.StatusCode);
+        }
+        [TestMethod]
+        public async Task EditSuccessful()
+        {
+            //Arrange
+            City city = new City();
+            // Act
+            RedirectToRouteResult result = await controller.Edit(city) as RedirectToRouteResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsFalse(result.RouteValues.ContainsKey("controller"));
+            Assert.AreEqual("", result.RouteName);
+            Assert.IsTrue(result.RouteValues.ContainsKey("action"));
+            Assert.AreEqual("Cities", result.RouteValues["action"]);
+        }
+        [TestMethod]
+        public async Task EditFail()
+        {
+            //Arrange
+            City city = new City();
+            controller.ModelState.AddModelError("error", "error");
+            // Act
+            HttpStatusCodeResult result = await controller.Edit(city) as HttpStatusCodeResult;
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(400, result.StatusCode);
+        }
+        [TestMethod]
+        public async Task AddSuccessful()
+        {
+            //Arrange
+            City city = new City();
+            // Act
+            RedirectToRouteResult result = await controller.Create(city) as RedirectToRouteResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsFalse(result.RouteValues.ContainsKey("controller"));
+            Assert.AreEqual("", result.RouteName);
+            Assert.IsTrue(result.RouteValues.ContainsKey("action"));
+            Assert.AreEqual("Cities", result.RouteValues["action"]);
+        }
+        [TestMethod]
+        public async Task AddFail()
+        {
+            //Arrange
+            City city = new City();
+            controller.ModelState.AddModelError("error", "error");
+            // Act
+            HttpStatusCodeResult result = await controller.Create(city) as HttpStatusCodeResult; ;
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(400, result.StatusCode);
         }
     }
 }

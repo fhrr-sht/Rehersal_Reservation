@@ -20,7 +20,7 @@ namespace RehersalReservation.Controllers
             this.rehersalService = rehersalService;
             this.roomService = roomService;
         }
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Rehersals()
         {
             IEnumerable<Entity.RehersalSpase> data = await this.rehersalService.GetRehersals();
             if (data == null)
@@ -52,7 +52,7 @@ namespace RehersalReservation.Controllers
             {
                 return Content(@"Нельзя удалить связанный объект");
             }          
-            return RedirectToAction("Index");
+            return RedirectToAction("Rehersals");
         }
         [HttpPost]
         public async Task<ActionResult> Edit(RehersalSpace rehersalSpace)
@@ -68,7 +68,7 @@ namespace RehersalReservation.Controllers
                 RehersalSpaseID = rehersalSpace.RehersalSpaseID,
                 RehersalSpaseName = rehersalSpace.RehersalSpaseName
             });
-            return RedirectToAction("Index");
+            return RedirectToAction("Rehersals");
         }
         [HttpGet]
         public async Task<ActionResult> Edit(int id)
@@ -107,7 +107,7 @@ namespace RehersalReservation.Controllers
                 RehersalSpaseID = rehersalSpace.RehersalSpaseID,
                 RehersalSpaseName = rehersalSpace.RehersalSpaseName
             });
-            return RedirectToAction("Index");
+            return RedirectToAction("Rehersals");
         }
         public ActionResult About()
         {

@@ -16,19 +16,21 @@ namespace RehersalReservation.Tests.Controllers
     [TestClass]
     public class RehersalControllerTest
     {
+
         Mock<IRehersalService> rehersalService = new Mock<IRehersalService>();
         Mock<IRoomService> roomService = new Mock<IRoomService>();
+        RehersalController controller = null;
         const int IdOne = 1;
         const int IdTwo = 2;
-        [TestMethod]
-        public async Task Index()
+        public RehersalControllerTest()
         {
-            // Arrange
-            RehersalController controller = new RehersalController(rehersalService.Object, roomService.Object);
-
+            controller = new RehersalController(rehersalService.Object, roomService.Object);
+        }
+        [TestMethod]
+        public async Task Rehersals()
+        {
             // Act
-            ViewResult result = await controller.Index() as ViewResult;
-
+            ViewResult result = await controller.Rehersals() as ViewResult;
             // Assert
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result.ViewData.Model, typeof(List<RehersalSpace>));
@@ -37,12 +39,11 @@ namespace RehersalReservation.Tests.Controllers
         [TestMethod]
         public async Task DeleteSuccessful()
         {
-            roomService.Setup(room => room.GetRoomByRehersalID(IdOne)).
-                ReturnsAsync(new List<Entity.Room>() {
-               });
             // Arrange
-            RehersalController controller = new RehersalController(rehersalService.Object, roomService.Object);
-
+            roomService.Setup(room => room.GetRoomByRehersalID(IdOne)).
+                ReturnsAsync(new List<Entity.Room>()
+                {
+                });
             // Act
             RedirectToRouteResult result = await controller.Delete(IdOne) as RedirectToRouteResult;
 
@@ -51,11 +52,12 @@ namespace RehersalReservation.Tests.Controllers
             Assert.IsFalse(result.RouteValues.ContainsKey("controller"));
             Assert.AreEqual("", result.RouteName);
             Assert.IsTrue(result.RouteValues.ContainsKey("action"));
-            Assert.AreEqual("Index", result.RouteValues["action"]);
+            Assert.AreEqual("Rehersals", result.RouteValues["action"]);
         }
         [TestMethod]
         public async Task DeleteFail()
         {
+            // Arrange
             roomService.Setup(room => room.GetRoomByRehersalID(IdOne)).
                 ReturnsAsync(new List<Entity.Room>() {
                 new Entity.Room()
@@ -63,9 +65,6 @@ namespace RehersalReservation.Tests.Controllers
                     RehersalRoomID = IdOne
                 }
             });
-            // Arrange
-            RehersalController controller = new RehersalController(rehersalService.Object, roomService.Object);
-
             // Act
             ContentResult result = await controller.Delete(IdOne) as ContentResult;
 
@@ -76,6 +75,7 @@ namespace RehersalReservation.Tests.Controllers
         [TestMethod]
         public async Task DeleteNotFound()
         {
+            // Arrange
             roomService.Setup(room => room.GetRoomByRehersalID(IdOne)).
                 ReturnsAsync(new List<Entity.Room>() {
                 new Entity.Room()
@@ -83,40 +83,85 @@ namespace RehersalReservation.Tests.Controllers
                     RehersalRoomID = IdOne
                 }
             });
-            // Arrange
-            RehersalController controller = new RehersalController(rehersalService.Object, roomService.Object);
 
             // Act
             HttpStatusCodeResult result = await controller.Delete(IdTwo) as HttpStatusCodeResult; ;
 
             // Assert
             Assert.IsNotNull(result);
-           Assert.AreEqual(404, result.StatusCode);
+            Assert.AreEqual(404, result.StatusCode);
         }
         [TestMethod]
         public void About()
         {
-            // Arrange
-            RehersalController controller = new RehersalController(rehersalService.Object, roomService.Object);
-
             // Act
             ViewResult result = controller.About() as ViewResult;
 
             // Assert
             Assert.AreEqual("Your application description page.", result.ViewBag.Message);
         }
-
         [TestMethod]
         public void Contact()
         {
-            //Arrange
-            RehersalController controller = new RehersalController(rehersalService.Object, roomService.Object);
-
             // Act
             ViewResult result = controller.Contact() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
+        }
+        [TestMethod]
+        public async Task EditSuccessful()
+        {
+            //Arrange
+            RehersalSpace rehersalSpace = new RehersalSpace();
+            // Act
+            RedirectToRouteResult result = await controller.Edit(rehersalSpace) as RedirectToRouteResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsFalse(result.RouteValues.ContainsKey("controller"));
+            Assert.AreEqual("", result.RouteName);
+            Assert.IsTrue(result.RouteValues.ContainsKey("action"));
+            Assert.AreEqual("Rehersals", result.RouteValues["action"]);
+        }
+        [TestMethod]
+        public async Task EditFail()
+        {
+            //Arrange
+            RehersalSpace rehersalSpace = new RehersalSpace();
+            controller.ModelState.AddModelError("error", "error");
+            // Act
+            HttpStatusCodeResult result = await controller.Edit(rehersalSpace) as HttpStatusCodeResult;
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(400, result.StatusCode);
+        }
+        [TestMethod]
+        public async Task AddSuccessful()
+        {
+            //Arrange
+            RehersalSpace rehersalSpace = new RehersalSpace();
+            // Act
+            RedirectToRouteResult result = await controller.Add(rehersalSpace) as RedirectToRouteResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsFalse(result.RouteValues.ContainsKey("controller"));
+            Assert.AreEqual("", result.RouteName);
+            Assert.IsTrue(result.RouteValues.ContainsKey("action"));
+            Assert.AreEqual("Rehersals", result.RouteValues["action"]);
+        }
+        [TestMethod]
+        public async Task AddFail()
+        {
+            //Arrange
+            RehersalSpace rehersalSpace = new RehersalSpace();
+            controller.ModelState.AddModelError("error", "error");
+            // Act
+            HttpStatusCodeResult result = await controller.Add(rehersalSpace) as HttpStatusCodeResult; ;
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(400, result.StatusCode);
         }
     }
 }
