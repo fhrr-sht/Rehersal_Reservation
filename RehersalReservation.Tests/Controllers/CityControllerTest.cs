@@ -38,6 +38,7 @@ namespace RehersalReservation.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result.ViewData.Model, typeof(List<City>));
+            cityService.VerifyAll();
         }
         [TestMethod]
         public async Task DeleteSuccessful()
@@ -58,6 +59,7 @@ namespace RehersalReservation.Tests.Controllers
             Assert.AreEqual("", result.RouteName);
             Assert.IsTrue(result.RouteValues.ContainsKey("action"));
             Assert.AreEqual("Cities", result.RouteValues["action"]);
+            rehersalService.VerifyAll();
         }
         [TestMethod]
         public async Task DeleteFail()
@@ -76,6 +78,7 @@ namespace RehersalReservation.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
             Assert.AreEqual("Нельзя удалить связанный объект", result.Content);
+            rehersalService.VerifyAll();
         }
         [TestMethod]
         public async Task DeleteNotFound()
@@ -148,6 +151,42 @@ namespace RehersalReservation.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
             Assert.AreEqual(400, result.StatusCode);
+        }
+        [TestMethod]
+        public void Create()
+        {
+            // Act
+            ViewResult result = controller.Create() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+        [TestMethod]
+        public async Task EditByIDSuccessful()
+        {
+            // Arrange
+            cityService.Setup(city => city.GetCityByID(IdOne)).
+                ReturnsAsync(new Entity.City() {});
+            // Act
+            ViewResult result = await controller.Edit(IdOne) as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result.ViewData.Model, typeof(City));
+            cityService.VerifyAll();
+        }
+        [TestMethod]
+        public async Task EditByIDFail()
+        {
+            // Arrange
+            cityService.Setup(city => city.GetCityByID(IdOne)).
+                ReturnsAsync(new Entity.City() { });
+            // Act
+            HttpStatusCodeResult result = await controller.Edit(IdTwo) as HttpStatusCodeResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(404, result.StatusCode);
         }
     }
 }

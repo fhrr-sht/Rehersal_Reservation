@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using RehersalReservation.Controllers;
 using RehersalReservation.Models;
 using Services;
+using Entity;
 
 namespace RehersalReservation.Tests.Controllers
 {
@@ -53,6 +54,7 @@ namespace RehersalReservation.Tests.Controllers
             Assert.AreEqual("", result.RouteName);
             Assert.IsTrue(result.RouteValues.ContainsKey("action"));
             Assert.AreEqual("Rehersals", result.RouteValues["action"]);
+            roomService.VerifyAll();
         }
         [TestMethod]
         public async Task DeleteFail()
@@ -71,6 +73,7 @@ namespace RehersalReservation.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
             Assert.AreEqual("Нельзя удалить связанный объект", result.Content);
+            roomService.VerifyAll();
         }
         [TestMethod]
         public async Task DeleteNotFound()
@@ -162,6 +165,67 @@ namespace RehersalReservation.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
             Assert.AreEqual(400, result.StatusCode);
+        }
+        [TestMethod]
+        public async Task EditByIDSuccessful()
+        {
+            // Arrange
+            rehersalService.Setup(rehersal => rehersal.GetRehersalByID(IdOne)).
+                ReturnsAsync(new Entity.RehersalSpase() { });
+            // Act
+            ViewResult result = await controller.Edit(IdOne) as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result.ViewData.Model, typeof(RehersalSpace));
+            rehersalService.VerifyAll();
+        }
+        [TestMethod]
+        public async Task EditByIDFail()
+        {
+            // Arrange
+            rehersalService.Setup(rehersal => rehersal.GetRehersalByID(IdOne)).
+                  ReturnsAsync(new Entity.RehersalSpase() { });
+            // Act
+            HttpStatusCodeResult result = await controller.Edit(IdTwo) as HttpStatusCodeResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(404, result.StatusCode);
+        }
+        [TestMethod]
+        public void Add()
+        {
+            // Act
+            ViewResult result = controller.Add() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+        [TestMethod]
+        public async Task GetRehersalByCityIDSuccessful()
+        {
+            // Arrange
+            rehersalService.Setup(rehersal => rehersal.GetRehersalByCityID(IdOne)).
+                  ReturnsAsync(new List<RehersalSpase>() { new RehersalSpase() {} });
+            // Act
+            ViewResult result = await controller.GetRehersalByCityID(IdOne) as ViewResult;
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result.ViewData.Model, typeof(List<RehersalSpace>));
+            rehersalService.VerifyAll();
+        }
+        [TestMethod]
+        public async Task GetRehersalByCityIDFail()
+        {
+            // Arrange
+            rehersalService.Setup(rehersal => rehersal.GetRehersalByCityID(IdOne)).
+                  ReturnsAsync(new List<RehersalSpase>() { new RehersalSpase() { } });
+            // Act
+            HttpStatusCodeResult result = await controller.GetRehersalByCityID(IdTwo) as HttpStatusCodeResult;
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(404, result.StatusCode);
         }
     }
 }

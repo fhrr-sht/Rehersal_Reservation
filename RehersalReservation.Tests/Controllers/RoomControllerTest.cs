@@ -37,6 +37,7 @@ namespace RehersalReservation.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result.ViewData.Model, typeof(List<Room>));
+            roomService.VerifyAll();
         }
         [TestMethod]
         public async Task DeleteSuccessful()

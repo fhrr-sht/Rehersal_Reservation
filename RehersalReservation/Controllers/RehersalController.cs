@@ -14,7 +14,7 @@ namespace RehersalReservation.Controllers
     public class RehersalController : Controller
     {
         private IRehersalService rehersalService;
-        private IRoomService roomService;     
+        private IRoomService roomService;
         public RehersalController(IRehersalService rehersalService, IRoomService roomService)
         {
             this.rehersalService = rehersalService;
@@ -51,7 +51,7 @@ namespace RehersalReservation.Controllers
             else
             {
                 return Content(@"Нельзя удалить связанный объект");
-            }          
+            }
             return RedirectToAction("Rehersals");
         }
         [HttpPost]
@@ -78,7 +78,7 @@ namespace RehersalReservation.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Data not found");
             }
-            RehersalSpace rehersalSpace= new RehersalSpace
+            RehersalSpace rehersalSpace = new RehersalSpace
             {
                 Adress = data.Adress,
                 CityID = data.CityID,
@@ -89,7 +89,7 @@ namespace RehersalReservation.Controllers
         }
         [HttpGet]
         public ActionResult Add()
-        {            
+        {
             return View();
         }
 
@@ -124,6 +124,10 @@ namespace RehersalReservation.Controllers
         public async Task<ActionResult> GetRehersalByCityID(int cityID)
         {
             IEnumerable<Entity.RehersalSpase> data = await this.rehersalService.GetRehersalByCityID(cityID);
+            if (data == null || data.Count() == 0)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Data not found");
+            }
             IEnumerable<RehersalSpace> rehersalSpaces = data.Select(o =>
             new RehersalSpace
             {
