@@ -105,6 +105,67 @@ namespace RehersalReservation.Tests.Controllers
             Assert.IsNotNull(result);
             Assert.AreEqual(400, result.StatusCode);
         }
+        [TestMethod]
+        public void Create()
+        {
+            // Act
+            ViewResult result = controller.Create() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+        [TestMethod]
+        public async Task EditByIDSuccessful()
+        {
+            // Arrange
+            roomService.Setup(room => room.GetRoomByID(IdOne)).
+                ReturnsAsync(new Entity.Room() { });
+            // Act
+            ViewResult result = await controller.Edit(IdOne) as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result.ViewData.Model, typeof(Room));
+            roomService.VerifyAll();
+        }
+        [TestMethod]
+        public async Task EditByIDFail()
+        {
+            // Arrange
+            roomService.Setup(room => room.GetRoomByID(IdOne)).
+                ReturnsAsync(new Entity.Room() { });
+            // Act
+            HttpStatusCodeResult result = await controller.Edit(IdTwo) as HttpStatusCodeResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(404, result.StatusCode);
+        }
+        [TestMethod]
+        public async Task GetRoomByRehersalIDSuccessful()
+        {
+            // Arrange
+            roomService.Setup(room => room.GetRoomByRehersalID(IdOne)).
+                  ReturnsAsync(new List<Entity.Room>() { new Entity.Room() { } });
+            // Act
+            ViewResult result = await controller.GetRoomByRehersalID(IdOne) as ViewResult;
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result.ViewData.Model, typeof(List<Room>));
+            roomService.VerifyAll();
+        }
+        [TestMethod]
+        public async Task GetRoomByRehersalIDFail()
+        {
+            // Arrange
+            roomService.Setup(room => room.GetRoomByRehersalID(IdOne)).
+                   ReturnsAsync(new List<Entity.Room>() { new Entity.Room() { } });
+            // Act
+            HttpStatusCodeResult result = await controller.GetRoomByRehersalID(IdTwo) as HttpStatusCodeResult;
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(404, result.StatusCode);
+        }
     }
 
 }
