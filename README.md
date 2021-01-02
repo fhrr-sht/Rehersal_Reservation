@@ -1,5 +1,7 @@
 # Rehersal_Reservation Concept
-This is a web application 
+Rehersal Reservation is a web application which should provide convinient platform for musicians and rehersal admins to book and check rooms in their cities. 
+# Motivation
+I'd like to create a website with all availible rehersals to enable booking online. It must be much more effective for customers than calling or texting the Admin. 
 # Feature list
 Add, edit, delete, view rehersal space, city, room.
 - Future updates:
@@ -10,6 +12,8 @@ Cancel booking
  - .NET Framework 4.7.2
  - C# 
  - SQL Server 2019
+ - Unit Tests
+ - Task Asynchronous Pattern
 # Requirements
 IIS
 Browsers: FireFox, Chrome, IE 11.0
