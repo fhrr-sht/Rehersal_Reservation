@@ -2,7 +2,7 @@
 This is a web application 
 # Feature list
 Add, edit, delete, view rehersal space, city, room.
- Future updates:
+- Future updates:
 Access by User rights
 Booking room
 Cancel booking
