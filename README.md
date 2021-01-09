@@ -14,6 +14,7 @@ Cancel booking
  - SQL Server 2019
  - Unit Tests
  - Task Asynchronous Pattern
+ - MVC
 # Requirements
 IIS
 Browsers: FireFox, Chrome, IE 11.0
