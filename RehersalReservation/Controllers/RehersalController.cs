@@ -124,7 +124,7 @@ namespace RehersalReservation.Controllers
         public async Task<ActionResult> GetRehersalByCityID(int cityID)
         {
             IEnumerable<Entity.RehersalSpase> data = await this.rehersalService.GetRehersalByCityID(cityID);
-            if (data == null || data.Count() == 0)
+            if (data == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Data not found");
             }

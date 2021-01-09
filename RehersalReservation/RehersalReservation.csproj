@@ -187,7 +187,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Rehersal\About.cshtml" />
     <Content Include="Views\Rehersal\Contact.cshtml" />
-    <Content Include="Views\Rehersal\Index.cshtml" />
+    <Content Include="Views\Rehersal\Rehersals.cshtml" />
     <Content Include="Views\Shared\_GridPager.cshtml" />
     <Content Include="Views\Shared\_Grid.cshtml" />
     <Content Include="Views\Rehersal\Edit.cshtml" />

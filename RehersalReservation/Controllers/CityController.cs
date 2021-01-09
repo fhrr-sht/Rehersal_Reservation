@@ -22,7 +22,7 @@ namespace RehersalReservation.Controllers
         // GET: City
         public async Task<ActionResult> Cities()
         {
-            IEnumerable<Entity.City> data = await this.cityService.GetCities();
+            IEnumerable<Entity.City> data = await this.cityService.GetCities().ConfigureAwait(false);
             IEnumerable<City> cities = data.Select(o =>
             new City
             {
