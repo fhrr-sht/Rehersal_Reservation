@@ -5,8 +5,8 @@ I'd like to create a website with all availible rehersals to enable booking onli
 # Feature list
 Add, edit, delete, view rehersal space, city, room.
 - Future updates:
-Access by User rights
-Booking room
+Access by User rights,
+Booking room,
 Cancel booking
 # Tech framework used
  - .NET Framework 4.7.2
