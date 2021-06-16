@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace RehersalReservation.Controllers
 {
+    //[Authorize(Roles = "admin")]
     public class RoomController : Controller
     {
         private IRoomService roomService;

@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace RehersalReservation.Controllers
 {
+    [AllowAnonymous]
     public class CityController : Controller
     {
         private ICityService cityService;
@@ -22,7 +23,7 @@ namespace RehersalReservation.Controllers
         // GET: City
         public async Task<ActionResult> Cities()
         {
-            IEnumerable<Entity.City> data = await this.cityService.GetCities().ConfigureAwait(false);
+            IEnumerable<Entity.City> data = await this.cityService.GetCities();
             IEnumerable<City> cities = data.Select(o =>
             new City
             {
