@@ -63,6 +63,11 @@
     <Content Include="2020_11_26_001 SP GetRehersalByCityID.sql" />
     <Content Include="2020_11_26_002 SP GetRoomByRehersalID.sql" />
     <Content Include="2021_06_16_001 CreateRoles.sql" />
+    <Content Include="2021_06_30_001 DeleteUser.sql" />
+    <Content Include="2021_06_30_002 InsertUser.sql" />
+    <Content Include="2021_06_30_003 UpdateUser.sql" />
+    <Content Include="2021_06_30_004 GetUserByID.sql" />
+    <Content Include="2021_06_30_005 GetUsers.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

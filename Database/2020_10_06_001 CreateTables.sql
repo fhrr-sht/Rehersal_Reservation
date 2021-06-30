@@ -92,6 +92,7 @@ CREATE TABLE [dbo].[User](
 	[UserName] [nvarchar](50) NULL,
 	[UserMail] [nvarchar](50) NULL,
 	[UserPhone] [nvarchar](50) NULL,
+	[IsDeleted] [bit] NULL,
  CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
 (
 	[UserID] ASC
