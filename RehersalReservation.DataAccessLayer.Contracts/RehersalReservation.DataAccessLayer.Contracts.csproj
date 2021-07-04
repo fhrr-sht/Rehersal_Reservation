@@ -44,6 +44,7 @@
     <Compile Include="ICityRepository.cs" />
     <Compile Include="IRehersalRepository.cs" />
     <Compile Include="IRoomRepository.cs" />
+    <Compile Include="IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
